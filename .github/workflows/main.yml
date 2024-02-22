@@ -3,7 +3,8 @@ name: Buildwindows
 on:
   push:
     branches:
-      - main
+      - dev
+      - master
 
 jobs:
   msys2-64bit:
