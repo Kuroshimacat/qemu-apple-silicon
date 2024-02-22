@@ -51,7 +51,7 @@ jobs:
           }
           Write-Output "Invoking msys2.exe installer at $(Get-Date -Format u)"
           msys64\var\cache\msys2.exe -y
-          ((Get-Content -path .\msys64\etc\\post-install\\07-pacman-key.post -Raw) -replace '--refresh-keys', '--version') | Set-Content -Path ${CI_PROJECT_DIR}\msys64\etc\\post-install\\07-pacman-key.post
+          ((Get-Content -path .\msys64\etc\\post-install\\07-pacman-key.post -Raw) -replace '--refresh-keys', '--version') | Set-Content -Path ${GITHUB_WORKSPACE}\msys64\etc\\post-install\\07-pacman-key.post
           .\msys64\usr\bin\bash -lc "sed -i 's/^CheckSpace/#CheckSpace/g' /etc/pacman.conf"
           .\msys64\usr\bin\bash -lc 'pacman --noconfirm -Syuu'  # Core update
           .\msys64\usr\bin\bash -lc 'pacman --noconfirm -Syuu'  # Normal update
